@@ -6,7 +6,7 @@
 	    <center><legend>Admin Login</legend></center>
 	    <div class="form-group">
 	      <label for="username">User Name</label>
-	      <?php echo form_input(['name' => 'username', 'class' => 'form-control','placeholder' => 'username']); ?>
+	      <?php echo form_input(['name' => 'username', 'class' => 'form-control','placeholder' => 'username', 'value' => set_value('username')]); ?>
 	    </div>
 	    <span><?php echo form_error('username'); ?> </span>
 	    <div class="form-group">
