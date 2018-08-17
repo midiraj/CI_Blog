@@ -5,6 +5,13 @@
  */
 class Login extends MY_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		if ($this->session->userdata('user_id')) {
+			return redirect('admin/dashboard');
+		}
+	}
 	
 	public function index()
 	{
@@ -31,9 +38,10 @@ class Login extends MY_Controller
 				$this->session->set_userdata('user_id', $login_id);
 
 				// $this->load->view('admin/dashboard');
-				return redirect('admin/dashboard')
+				return redirect('admin/dashboard');
 
-			}else
+			}
+			else
 			{
 				echo "Password Not Match";
 				// authentication failed.
