@@ -11,4 +11,6 @@ class Admin extends MY_Controller
 		echo "Admin Index";
 	}
 
+	
+
 }

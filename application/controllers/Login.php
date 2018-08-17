@@ -24,7 +24,21 @@ class Login extends MY_Controller
 			// echo "Validation Successful";
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
-			echo "username : $username and password: $password";
+			$this->load->model('loginmodel');
+			$login_id = $this->loginmodel->login_valid($username, $password);
+			if($login_id){
+				// creadentials valid, login user
+				$this->load->library('session');
+				$this->session->set_userdata('user_id', $login_id);
+
+				$this->load->view('admin/dashboard');
+
+			}else
+			{
+				echo "Password Not Match";
+				// authentication failed.
+			}
+
 
 		}else{
 			$this->load->view('public/admin_login');
