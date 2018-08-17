@@ -20,7 +20,8 @@
 	  <div class="collapse navbar-collapse" id="navbarColor03">
 	      <ul class="nav navbar-nav navbar-right">
 		      <li class="nav-item" >
-		        <a class="nav-link" href="#">Logout</a>
+		        <!-- <a class="nav-link" href="#">Logout</a> -->
+		        <?= anchor('login/logout','Logout',array('class' => 'nav-link')); ?>
 		      </li>
 	      </ul>
 	  </div>

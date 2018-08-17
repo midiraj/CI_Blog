@@ -5,13 +5,6 @@
  */
 class Login extends MY_Controller
 {
-	public function __construct()
-	{
-		parent::__construct();
-		if ($this->session->userdata('user_id')) {
-			return redirect('admin/dashboard');
-		}
-	}
 	
 	public function index()
 	{
@@ -52,6 +45,13 @@ class Login extends MY_Controller
 			$this->load->view('public/admin_login');
 			// echo validation_errors();
 		}
+
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('user_id');
+		return redirect('login');
 
 	}
 
