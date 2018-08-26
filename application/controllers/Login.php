@@ -1,13 +1,13 @@
 <?php
 
-/**
- * 
- */
 class Login extends MY_Controller
 {
 	
 	public function index()
 	{
+		if ($this->session->userdata('user_id')) {
+			return redirect('admin/dashboard');
+		}
 		$this->load->view('public/admin_login');
 	}
 
@@ -25,6 +25,7 @@ class Login extends MY_Controller
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			$this->load->model('loginmodel');
+			
 			$login_id = $this->loginmodel->login_valid($username, $password);
 			if($login_id){
 				// creadentials valid, login user
@@ -36,8 +37,10 @@ class Login extends MY_Controller
 			}
 			else
 			{
-				echo "Password Not Match";
+				// echo "Password Not Match";
 				// authentication failed.
+				$this->session->set_flashdata('login_failed','Invalid Username/Password');
+				return redirect('login');
 			}
 
 

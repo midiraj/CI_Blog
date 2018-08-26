@@ -1,6 +1,11 @@
 <?php include_once('public_header.php'); ?>
 
 <div class="container">
+	<?php if($error = $this->session->flashdata('login_failed')): ?>
+	<div class="alert alert-dismissible alert-danger mt-2">
+	  <strong><?= $error ?></strong>
+	</div>
+<?php endif ?>
 	<?php echo form_open('login/admin_login',['class' => 'form-horizontal']); ; ?>
 	  <fieldset class="mt-5">
 	    <center><legend>Admin Login</legend></center>
